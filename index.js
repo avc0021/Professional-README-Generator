@@ -6,6 +6,19 @@ const inquirer = require('inquirer');
 const questions = () => {
     return inquirer.prompt([
         {
+        type: 'input',
+        name: 'name',
+        message: 'What is the name of your project? (Required)',
+        validate: nameInput => {
+            if (nameInput) {
+              return true;
+            } else {
+            console.log('You need to enter a project name!');
+              return false;
+            }
+          }
+        },
+        {
             type: 'input',
             name: 'name',
             message: 'Who contributed to the project? (Required)',
@@ -16,8 +29,10 @@ const questions = () => {
                     console.log('Please enter credits.');
                     return false;
                 }
-      }
-    },
+            }
+        },
+
+
   ])
 };
     //Credits- Enter Name, if name is entered then ask for github username
