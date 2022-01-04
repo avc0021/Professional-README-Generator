@@ -2,9 +2,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-// const generatePage = (userName, githubName) => `Name: ${userName}, Github: ${githubName}`;
-// console.log(generatePage('Jane', 'janehub'));
-
 // TODO: Create an array of questions for user input
 const questions = () => {
     return inquirer.prompt([
@@ -124,7 +121,14 @@ const questions = () => {
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+const init = () => {
+    questions()
+        .then( answers => fs.writeFile( 'ReadMe.md', generateMarkdown (answers))
+        .then(() => console.log('ReadMe created!'))
+        .catch(err => {
+            console.log(err);
+})       
+};
 
 // Function call to initialize app
-questions();
+init();
