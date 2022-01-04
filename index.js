@@ -96,7 +96,7 @@ const questions = () => {
           type: 'checkbox',
           name: 'confirmLicense',
           message: 'Which license was used for this project?',
-          choices: ['MIT License', 'Apache License 2.0', 'GNU GPLv2', 'ISC License', 'N/A'],
+          choices: ['MIT', 'Apache 2.0', 'GNU GPLv2', 'ISC', 'N/A'],
           validate: licenseInput => {
             if (licenseInput) {
               return true
@@ -127,6 +127,4 @@ function writeToFile(fileName, data) {}
 function init() {}
 
 // Function call to initialize app
-init();
-
 questions();
