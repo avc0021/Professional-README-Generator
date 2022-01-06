@@ -7,7 +7,7 @@ const questions = () => {
     return inquirer.prompt([
         {
           type: 'input',
-          name: 'projectName',
+          name: 'title',
           message: 'What is the name of your project? (Required)',
           validate: projectName => {
             if (projectName) {
@@ -91,7 +91,7 @@ const questions = () => {
         },
         {
           type: 'checkbox',
-          name: 'confirmLicense',
+          name: 'license',
           message: 'Which license was used for this project?',
           choices: ['MIT', 'Apache', 'GNU GPLv2', 'ISC', 'N/A'],
           validate: licenseInput => {
