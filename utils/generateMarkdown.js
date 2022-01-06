@@ -24,7 +24,7 @@ function renderLicenseLink(license) {
     case 'ISC': licenseLink = 'https://www.isc.org/licenses/';
     break;
 
-    case 'N/A' = 'This app has no license.'
+    case 'N/A' : 'This app has no license.'
   }
 
 }
@@ -35,7 +35,43 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `
+  # ${data.title}
+
+  # Table of Contents
+  *[Contributing](#name)
+  *[Description](#description)
+  *[Languages](#languages)
+  *[Install](#install)
+  *[Usage][#usage]
+  *[Tests](#tests)
+  *[License](#license)
+  *[Questions](#github)
+
+  # Contributing
+  ${data.name}
+
+  # Description
+  ${data.description}
+
+  # Languages Used
+  ${data.language}
+
+  # Install
+  ${data.install}
+
+  # Usage
+  ${data.useage}
+
+  # Tests
+  ${data.tests}
+
+  # License
+  ${data.license}
+
+  # Questions
+  *Github: (https://github.com/${data.github})
+
 `;
 }
 
