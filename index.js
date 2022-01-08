@@ -114,33 +114,37 @@ const questions = () => {
           message: 'Provide test(s) for application.',
           default: true
         }
-
+        
   ])
 };
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+const writeFile = questions => {
   return new Promise((resolve, reject) => {
-    fs.writeFile('README.md', generateMarkdown(answers), err => {
-      if (err) {
-        reject(err);
-        return;
-      }
+  fs.writeFile('README.md', questions, err => {
+    if(err) {
+      console.error(err)
+      return 
+    }
 
-      resolve({
-        ok: true,
-        message: 'File created!'
-      });
+    resolve({
+      ok: true,
+      message: 'File created!'
     });
+   });
   });
 };
 
 // TODO: Create a function to initialize app
-   const init = () => {
-       questions()
-       .then(generateMarkdown)
-       .catch(err => console.log(err));
- };
+// function init = () => {
+//        questions()
+//        .then(generateMarkdown)
+//        .catch(err => console.log(err));
+//  };
 
-// Function call to initialize app
-init();
+// // Function call to initialize app
+// init();
+questions()
+  .then(writeFile)
+  .then(generateMarkdown)
+  .catch(err => console.log(err));
