@@ -138,7 +138,8 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
    const init = () => {
        questions()
-       .catch(err => console.log(err))     
+       .then(generateMarkdown)
+       .catch(err => console.log(err));
  };
 
 // Function call to initialize app
