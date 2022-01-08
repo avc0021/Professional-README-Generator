@@ -24,7 +24,7 @@ function renderLicenseLink(license) {
     case 'ISC': licenseLink = 'https://www.isc.org/licenses/';
     break;
 
-    case 'N/A' : 'This app has no license.'
+    case 'N/A' : licenseLink = 'This app has no license.'
   }
 
 }
@@ -71,6 +71,7 @@ function generateMarkdown(data) {
 
   # Questions
   *Github: (https://github.com/${data.github})
+  *Email: (mailto:${data.email})
 
 `;
 }
