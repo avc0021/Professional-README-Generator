@@ -1,13 +1,14 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = () => {
     return inquirer.prompt([
         {
           type: 'input',
-          name: 'projectName',
+          name: 'title',
           message: 'What is the name of your project? (Required)',
           validate: projectName => {
             if (projectName) {
@@ -46,6 +47,11 @@ const questions = () => {
         },
         {
           type: 'input',
+          name: 'email',
+          message: 'What is your email address?'
+        },
+        {
+          type: 'input',
           name: 'description',
           message: 'Provide a description of the project (Required)',
           validate: descriptionInput => {
@@ -60,7 +66,7 @@ const questions = () => {
         {
           type: 'checkbox',
           name: 'languages',
-          message: 'What did you this project with? (Check all that apply)',
+          message: 'What did you use while making this project? (Check all that apply)',
           choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
         },
         {
@@ -78,7 +84,7 @@ const questions = () => {
         },
         {
           type: 'input',
-          name: 'useage',
+          name: 'usage',
           message: 'Describe intended use of your project.',
           validate: descriptionInput => {
             if (descriptionInput) {
@@ -90,33 +96,55 @@ const questions = () => {
           }
         },
         {
-          type: 'confirm',
-          name: 'confirmLicense',
-          message: 'Would you like to enter a open source license?',
-          default: true
+          type: 'checkbox',
+          name: 'license',
+          message: 'Which license was used for this project?',
+          choices: ['MIT', 'Apache', 'GNU GPLv2', 'ISC', 'N/A'],
+          validate: licenseInput => {
+            if (licenseInput) {
+              return true
+            } else {
+              console.log('Please select a license to continue.')
+            }
+          }
         },
         {
           type: 'input',
-          name: 'license',
+          name: 'tests',
           message: 'Provide test(s) for application.',
-          default: true
+          default: false
         }
-
+        
   ])
 };
-    //Credits- Enter Name, if name is entered then ask for github username
-    //Please provide a description of your project
-    //What was used during this project?
-    //How to Install
-    //License
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const writeFile = questions => {
+  return new Promise((resolve, reject) => {
+  fs.writeFile('README.md', questions, err => {
+    if(err) {
+      console.error(err)
+      return 
+    }
+
+    resolve({
+      ok: true,
+      message: 'File created!'
+    });
+   });
+  });
+};
 
 // TODO: Create a function to initialize app
-function init() {}
+// function init = () => {
+//        questions()
+//        .then(generateMarkdown)
+//        .catch(err => console.log(err));
+//  };
 
-// Function call to initialize app
-init();
-
-questions();
+// // Function call to initialize app
+// init();
+questions()
+  .then(writeFile)
+  .then(generateMarkdown)
+  .catch(err => console.log(err));
