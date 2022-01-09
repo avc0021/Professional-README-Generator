@@ -84,7 +84,7 @@ const questions = () => {
         },
         {
           type: 'input',
-          name: 'useage',
+          name: 'usage',
           message: 'Describe intended use of your project.',
           validate: descriptionInput => {
             if (descriptionInput) {
