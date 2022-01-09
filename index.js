@@ -66,7 +66,7 @@ const questions = () => {
         {
           type: 'checkbox',
           name: 'languages',
-          message: 'What did you this project with? (Check all that apply)',
+          message: 'What did you use while making this project? (Check all that apply)',
           choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
         },
         {
@@ -84,7 +84,7 @@ const questions = () => {
         },
         {
           type: 'input',
-          name: 'useage',
+          name: 'usage',
           message: 'Describe intended use of your project.',
           validate: descriptionInput => {
             if (descriptionInput) {
@@ -112,35 +112,39 @@ const questions = () => {
           type: 'input',
           name: 'tests',
           message: 'Provide test(s) for application.',
-          default: true
+          default: false
         }
-
+        
   ])
 };
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+const writeFile = questions => {
   return new Promise((resolve, reject) => {
-    fs.writeFile('README.md', generateMarkdown(answers), err => {
-      if (err) {
-        reject(err);
-        return;
-      }
+  fs.writeFile('README.md', questions, err => {
+    if(err) {
+      console.error(err)
+      return 
+    }
 
-      resolve({
-        ok: true,
-        message: 'File created!'
-      });
+    resolve({
+      ok: true,
+      message: 'File created!'
     });
+   });
   });
 };
 
 // TODO: Create a function to initialize app
-   const init = () => {
-       questions()
-       .then(generateMarkdown)
-       .catch(err => console.log(err));
- };
+// function init = () => {
+//        questions()
+//        .then(generateMarkdown)
+//        .catch(err => console.log(err));
+//  };
 
-// Function call to initialize app
-init();
+// // Function call to initialize app
+// init();
+questions()
+  .then(writeFile)
+  .then(generateMarkdown)
+  .catch(err => console.log(err));
