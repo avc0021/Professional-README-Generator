@@ -112,7 +112,7 @@ const questions = () => {
           type: 'input',
           name: 'tests',
           message: 'Provide test(s) for application.',
-          default: true
+          default: false
         }
         
   ])
