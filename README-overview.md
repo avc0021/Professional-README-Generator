@@ -26,13 +26,11 @@ SO THAT I can quickly create a professional README for a new project
 After cloning the repo the NPM package manager will need to be installed to start. This can be completed by invoking 'npm init' in the command line. Also 'npm install' will need to invoked as well to install the dependency files. Lastly, by entering node index into the command line will initialize the application.
 
 # Usage
-By entering the according data in the command line, this application will generate a professional readme.
+To use the application 'Node index' will need to be invoked. By entering the according data in the command line, this application will generate a professional readme.
 
 
-SCREENSHOT GOES HERE!
-
-
-![alt text](assets/images/screenshot.png)
+![Readme GIF]
+<iframe src="https://drive.google.com/file/d/1Ct4J1tCCbKCVDYLR7Jmfy5MeXQR6gLe-/preview" width="440" height="280"></iframe>
 
 
 
