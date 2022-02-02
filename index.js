@@ -4,22 +4,22 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-const questions = () => {
-    inquirer.prompt([
+async function questions() {
+    return await inquirer.prompt([
         {
           type: 'input',
           name: 'title',
-          message: 'What is the name of your project? (Required)',
+          message: 'What is the name of your project?',
         },
         {
           type: 'input',
           name: 'name',
-          message: 'Who contributed to the project? (Required)',
+          message: 'Who contributed to the project?',
         },
         {
           type: 'input',
           name: 'github',
-          message: 'Enter your GitHub Username (Required)',
+          message: 'Enter your GitHub Username',
         },
         {
           type: 'input',
@@ -29,7 +29,7 @@ const questions = () => {
         {
           type: 'input',
           name: 'description',
-          message: 'Provide a description of the project (Required)',
+          message: 'Provide a description of the project',
         },
         {
           type: 'checkbox',
@@ -40,7 +40,7 @@ const questions = () => {
         {
           type: 'input',
           name: 'install',
-          message: 'Provide the required steps needed to install and run application. (Required)',
+          message: 'Provide the required steps needed to install and run application.',
         },
         {
           type: 'input',
@@ -63,11 +63,11 @@ const questions = () => {
   ])
 }
 
-// TODO: Create a function to write README file
-const writeFile = questionsInfo => {
+// TODO: Create a function to write README file (issue is here!)
+function writeToFile (questionsInfo) {
   fs.writeFile('./dist/README.md', questionsInfo, err => {
     if(err) {
-      console.error(err)
+      reject(err)
       return;
     }
    });
