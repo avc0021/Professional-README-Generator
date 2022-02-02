@@ -82,8 +82,8 @@ function init() {
         .then(data => {
           return generateMarkdown(data)
         })
-        .then(readmeInfo => {
-          return writeFile(questionsInfo)
+        .then(questionsInfo => {
+          return writeToFile(questionsInfo)
         })
   }
 
