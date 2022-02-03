@@ -57,7 +57,6 @@ async function questions() {
           type: 'input',
           name: 'tests',
           message: 'Provide test(s) for application.',
-          default: false
         }
         
   ])
