@@ -34,9 +34,9 @@ After cloning the repo the NPM package manager will need to be installed to star
 
 To use the application 'Node index' will need to be invoked. By entering the according data in the command line, this application will generate a professional readme.
 
-![Readme GIF]
+![ Demo ]
 
-<iframe src="https://www.loom.com/share/a3e4cd97beef4c9883130d1e0686b134" width="440" height="280"></iframe>
+https://www.loom.com/share/a3e4cd97beef4c9883130d1e0686b134
 
 # License
 
